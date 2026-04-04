@@ -5,7 +5,7 @@ import { regionLabels } from "../../data/regionLabels";
 import { useState } from "react";
 
 // Placeholder empty array until GeoJSON is loaded
-const geoUrl = "/kz.json";
+const geoUrl = `${import.meta.env.BASE_URL}kz.json`;
 
 export default function KazakhstanMap() {
     const { selectedMetric, selectedYear, selectedRegion, setRegion } = useMapStore();
