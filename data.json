@@ -1,0 +1,990 @@
+{
+    "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+    ],
+    "metrics_dict": {
+        "registered_ngos": "Количество зарегистрированных НПО",
+        "active_ngos": "Количество действующих НПО",
+        "employees": "Количество сотрудников НПО",
+        "state_projects": "Проекты госзаказа",
+        "state_funding": "Объем госзаказа (млн)",
+        "grant_projects": "Грантовые проекты",
+        "grant_funding": "Объем грантов (млн)",
+        "volunteer_orgs": "Волонтерские организации",
+        "active_volunteers": "Активные волонтеры",
+        "charities": "Благотворительные организации",
+        "public_councils": "Общественные советы",
+        "council_meetings": "Заседания советов",
+        "public_hearings": "Общественные слушания"
+    },
+    "national_totals": {
+        "2020": {
+            "registered_ngos": null,
+            "active_ngos": null,
+            "employees": 42328,
+            "state_projects": 1656,
+            "state_funding": 15038.0,
+            "grant_projects": 117,
+            "grant_funding": 1837.0,
+            "volunteer_orgs": 224,
+            "active_volunteers": 50000,
+            "charities": null,
+            "public_councils": 217,
+            "council_meetings": 1483,
+            "public_hearings": null
+        },
+        "2021": {
+            "registered_ngos": null,
+            "active_ngos": null,
+            "employees": 46052,
+            "state_projects": 1795,
+            "state_funding": 14652.0,
+            "grant_projects": 51,
+            "grant_funding": 1422.0,
+            "volunteer_orgs": 673,
+            "active_volunteers": 100000,
+            "charities": null,
+            "public_councils": 217,
+            "council_meetings": 1492,
+            "public_hearings": null
+        },
+        "2022": {
+            "registered_ngos": 21413,
+            "active_ngos": null,
+            "employees": 48120,
+            "state_projects": 1698,
+            "state_funding": 16902.5,
+            "grant_projects": 87,
+            "grant_funding": 2149.0,
+            "volunteer_orgs": 680,
+            "active_volunteers": 200000,
+            "charities": null,
+            "public_councils": 223,
+            "council_meetings": 1507,
+            "public_hearings": null
+        },
+        "2023": {
+            "registered_ngos": 23335,
+            "active_ngos": null,
+            "employees": 49495,
+            "state_projects": 2091,
+            "state_funding": 26833.8,
+            "grant_projects": 135,
+            "grant_funding": 2144.0,
+            "volunteer_orgs": 700,
+            "active_volunteers": 240000,
+            "charities": 1071,
+            "public_councils": 223,
+            "council_meetings": 1521,
+            "public_hearings": 304
+        },
+        "2024": {
+            "registered_ngos": 22227,
+            "active_ngos": 17964,
+            "employees": 42328,
+            "state_projects": 2191,
+            "state_funding": 33776.8,
+            "grant_projects": 189,
+            "grant_funding": 2608.0,
+            "volunteer_orgs": 745,
+            "active_volunteers": 275000,
+            "charities": 1371,
+            "public_councils": 228,
+            "council_meetings": 1483,
+            "public_hearings": 320
+        },
+        "2025": {
+            "registered_ngos": 23194,
+            "active_ngos": 18000,
+            "employees": null,
+            "state_projects": 2237,
+            "state_funding": 37794.2,
+            "grant_projects": 102,
+            "grant_funding": 1808.0,
+            "volunteer_orgs": null,
+            "active_volunteers": null,
+            "charities": null,
+            "public_councils": 228,
+            "council_meetings": null,
+            "public_hearings": 737
+        }
+    },
+    "regions": {
+        "область Абай": {
+            "2020": {
+                "state_projects": 0,
+                "state_funding": 0.0,
+                "public_councils": null
+            },
+            "2021": {
+                "state_projects": 0,
+                "state_funding": 0.0,
+                "public_councils": null
+            },
+            "2022": {
+                "state_projects": 0,
+                "state_funding": 0.0,
+                "public_councils": 11
+            },
+            "2023": {
+                "registered_ngos": 574,
+                "state_projects": 43,
+                "state_funding": 476.9,
+                "public_councils": 11,
+                "public_hearings": null
+            },
+            "2024": {
+                "registered_ngos": 493,
+                "active_ngos": 170,
+                "state_projects": 33,
+                "state_funding": 303.8,
+                "public_councils": 13,
+                "public_hearings": 31
+            },
+            "2025": {
+                "registered_ngos": 522,
+                "active_ngos": 450,
+                "state_projects": 31,
+                "state_funding": 2864.5,
+                "public_councils": 13,
+                "public_hearings": 10
+            }
+        },
+        "Акмолинская область": {
+            "2020": {
+                "state_projects": 104,
+                "state_funding": 481.1,
+                "public_councils": 20
+            },
+            "2021": {
+                "state_projects": 109,
+                "state_funding": 620.0,
+                "public_councils": 20
+            },
+            "2022": {
+                "registered_ngos": 640,
+                "state_projects": 75,
+                "state_funding": 469.4,
+                "public_councils": 21
+            },
+            "2023": {
+                "registered_ngos": 712,
+                "state_projects": 110,
+                "state_funding": 761.4,
+                "public_councils": 21,
+                "public_hearings": 23
+            },
+            "2024": {
+                "registered_ngos": 623,
+                "active_ngos": 561,
+                "state_projects": 127,
+                "state_funding": 959.8,
+                "public_councils": 21,
+                "public_hearings": 1
+            },
+            "2025": {
+                "registered_ngos": 1295,
+                "active_ngos": 1001,
+                "state_projects": 105,
+                "state_funding": 720.2,
+                "public_councils": 21,
+                "public_hearings": 85
+            }
+        },
+        "Актюбинская область": {
+            "2020": {
+                "state_projects": 76,
+                "state_funding": 958.3,
+                "public_councils": 14
+            },
+            "2021": {
+                "state_projects": 99,
+                "state_funding": 759.0,
+                "public_councils": 14
+            },
+            "2022": {
+                "registered_ngos": 742,
+                "state_projects": 78,
+                "state_funding": 995.7,
+                "public_councils": 14
+            },
+            "2023": {
+                "registered_ngos": 862,
+                "state_projects": 94,
+                "state_funding": 1337.2,
+                "grant_projects": 1,
+                "grant_funding": 8.0,
+                "public_councils": 14,
+                "public_hearings": 10
+            },
+            "2024": {
+                "registered_ngos": 843,
+                "active_ngos": 630,
+                "state_projects": 89,
+                "state_funding": 2313.1,
+                "grant_projects": 2,
+                "grant_funding": 13.1,
+                "public_councils": 14,
+                "public_hearings": 18
+            },
+            "2025": {
+                "registered_ngos": 811,
+                "active_ngos": 672,
+                "state_projects": 85,
+                "state_funding": 2154.8,
+                "grant_projects": 4,
+                "grant_funding": 25.0,
+                "public_councils": 14,
+                "public_hearings": 57
+            }
+        },
+        "Алматинская область": {
+            "2020": {
+                "state_projects": 99,
+                "state_funding": 241.2,
+                "public_councils": 21
+            },
+            "2021": {
+                "state_projects": 92,
+                "state_funding": 199.2,
+                "public_councils": 21
+            },
+            "2022": {
+                "registered_ngos": 1053,
+                "state_projects": 57,
+                "state_funding": 197.5,
+                "public_councils": 11
+            },
+            "2023": {
+                "registered_ngos": 669,
+                "state_projects": 77,
+                "state_funding": 969.1,
+                "grant_projects": 2,
+                "grant_funding": 16.9,
+                "public_councils": 11,
+                "public_hearings": 59
+            },
+            "2024": {
+                "registered_ngos": 681,
+                "active_ngos": 561,
+                "state_projects": 75,
+                "state_funding": 952.2,
+                "grant_projects": 2,
+                "grant_funding": 13.3,
+                "public_councils": 12,
+                "public_hearings": 4
+            },
+            "2025": {
+                "registered_ngos": 860,
+                "active_ngos": 207,
+                "state_projects": 82,
+                "state_funding": 1011.1,
+                "public_councils": 12,
+                "public_hearings": 2
+            }
+        },
+        "Атырауская область": {
+            "2020": {
+                "state_projects": 40,
+                "state_funding": 636.8,
+                "public_councils": 9
+            },
+            "2021": {
+                "state_projects": 61,
+                "state_funding": 688.4,
+                "public_councils": 9
+            },
+            "2022": {
+                "registered_ngos": 660,
+                "state_projects": 45,
+                "state_funding": 718.0,
+                "grant_projects": 9,
+                "grant_funding": 64.7,
+                "public_councils": 9
+            },
+            "2023": {
+                "registered_ngos": 730,
+                "state_projects": 70,
+                "state_funding": 987.9,
+                "grant_projects": 11,
+                "grant_funding": 79.3,
+                "public_councils": 9,
+                "public_hearings": 9
+            },
+            "2024": {
+                "registered_ngos": 738,
+                "active_ngos": 672,
+                "state_projects": 71,
+                "state_funding": 1809.5,
+                "grant_projects": 20,
+                "grant_funding": 136.5,
+                "public_councils": 9,
+                "public_hearings": 48
+            },
+            "2025": {
+                "registered_ngos": 743,
+                "active_ngos": 303,
+                "state_projects": 101,
+                "state_funding": 1855.6,
+                "grant_projects": 16,
+                "grant_funding": 144.0,
+                "public_councils": 9,
+                "public_hearings": 59
+            }
+        },
+        "Жамбылская область": {
+            "2020": {
+                "state_projects": 114,
+                "state_funding": 982.6,
+                "public_councils": 12
+            },
+            "2021": {
+                "state_projects": 154,
+                "state_funding": 762.7,
+                "public_councils": 12
+            },
+            "2022": {
+                "registered_ngos": 868,
+                "state_projects": 123,
+                "state_funding": 863.2,
+                "public_councils": 12
+            },
+            "2023": {
+                "registered_ngos": 1080,
+                "state_projects": 143,
+                "state_funding": 1158.8,
+                "public_councils": 12,
+                "public_hearings": 18
+            },
+            "2024": {
+                "registered_ngos": 987,
+                "active_ngos": 664,
+                "state_projects": 118,
+                "state_funding": 1071.8,
+                "grant_projects": 3,
+                "grant_funding": 16.7,
+                "public_councils": 12,
+                "public_hearings": 8
+            },
+            "2025": {
+                "registered_ngos": 1052,
+                "active_ngos": 1001,
+                "state_projects": 60,
+                "state_funding": 289.2,
+                "grant_projects": 5,
+                "grant_funding": 29.5,
+                "public_councils": 12,
+                "public_hearings": 0
+            }
+        },
+        "область Жетісу": {
+            "2020": {
+                "state_projects": 0,
+                "state_funding": 0.0,
+                "public_councils": null
+            },
+            "2021": {
+                "state_projects": 0,
+                "state_funding": 0.0,
+                "public_councils": null
+            },
+            "2022": {
+                "state_projects": 51,
+                "state_funding": 197.2,
+                "public_councils": 11
+            },
+            "2023": {
+                "registered_ngos": 671,
+                "state_projects": 74,
+                "state_funding": 1382.9,
+                "grant_projects": 7,
+                "grant_funding": 57.0,
+                "public_councils": 11,
+                "public_hearings": 16
+            },
+            "2024": {
+                "registered_ngos": 587,
+                "active_ngos": 431,
+                "state_projects": 83,
+                "state_funding": 1105.9,
+                "grant_projects": 9,
+                "grant_funding": 59.0,
+                "public_councils": 11,
+                "public_hearings": 17
+            },
+            "2025": {
+                "registered_ngos": 582,
+                "active_ngos": 442,
+                "state_projects": 91,
+                "state_funding": 1296.2,
+                "grant_projects": 8,
+                "grant_funding": 71.6,
+                "public_councils": 11,
+                "public_hearings": 27
+            }
+        },
+        "Западно-Казахстанская область": {
+            "2020": {
+                "state_projects": 147,
+                "state_funding": 1100.8,
+                "public_councils": 14
+            },
+            "2021": {
+                "state_projects": 144,
+                "state_funding": 735.0,
+                "public_councils": 14
+            },
+            "2022": {
+                "registered_ngos": 642,
+                "state_projects": 130,
+                "state_funding": 827.3,
+                "public_councils": 14
+            },
+            "2023": {
+                "registered_ngos": 701,
+                "state_projects": 163,
+                "state_funding": 1055.0,
+                "grant_projects": 3,
+                "grant_funding": 25.0,
+                "public_councils": 14,
+                "public_hearings": 4
+            },
+            "2024": {
+                "registered_ngos": 673,
+                "active_ngos": 591,
+                "state_projects": 162,
+                "state_funding": 1098.8,
+                "public_councils": 14,
+                "public_hearings": 7
+            },
+            "2025": {
+                "registered_ngos": 675,
+                "active_ngos": 597,
+                "state_projects": 190,
+                "state_funding": 930.8,
+                "public_councils": 14,
+                "public_hearings": 0
+            }
+        },
+        "Карагандинская область": {
+            "2020": {
+                "state_projects": 178,
+                "state_funding": 5963.3,
+                "public_councils": 19
+            },
+            "2021": {
+                "state_projects": 186,
+                "state_funding": 3609.3,
+                "public_councils": 19
+            },
+            "2022": {
+                "registered_ngos": 1321,
+                "state_projects": 153,
+                "state_funding": 4255.0,
+                "grant_projects": 3,
+                "grant_funding": 36.9,
+                "public_councils": 14
+            },
+            "2023": {
+                "registered_ngos": 1237,
+                "state_projects": 116,
+                "state_funding": 1180.7,
+                "grant_projects": 2,
+                "grant_funding": 16.0,
+                "public_councils": 14,
+                "public_hearings": 2
+            },
+            "2024": {
+                "registered_ngos": 1258,
+                "active_ngos": 923,
+                "state_projects": 122,
+                "state_funding": 1433.2,
+                "grant_projects": 2,
+                "grant_funding": 16.0,
+                "public_councils": 14,
+                "public_hearings": 2
+            },
+            "2025": {
+                "registered_ngos": 1283,
+                "active_ngos": 1201,
+                "state_projects": 161,
+                "state_funding": 1891.9,
+                "public_councils": 14,
+                "public_hearings": 28
+            }
+        },
+        "Костанайская область": {
+            "2020": {
+                "state_projects": 243,
+                "state_funding": 424.3,
+                "public_councils": 21
+            },
+            "2021": {
+                "state_projects": 272,
+                "state_funding": 570.3,
+                "public_councils": 21
+            },
+            "2022": {
+                "registered_ngos": 737,
+                "state_projects": 287,
+                "state_funding": 749.6,
+                "grant_projects": 2,
+                "grant_funding": 13.5,
+                "public_councils": 21
+            },
+            "2023": {
+                "registered_ngos": 774,
+                "state_projects": 309,
+                "state_funding": 2694.3,
+                "public_councils": 21,
+                "public_hearings": 42
+            },
+            "2024": {
+                "registered_ngos": 761,
+                "active_ngos": 691,
+                "state_projects": 283,
+                "state_funding": 3152.4,
+                "public_councils": 21,
+                "public_hearings": 2
+            },
+            "2025": {
+                "registered_ngos": 748,
+                "active_ngos": 743,
+                "state_projects": 249,
+                "state_funding": 1357.8,
+                "public_councils": 21,
+                "public_hearings": 180
+            }
+        },
+        "Кызылординская область": {
+            "2020": {
+                "state_projects": 131,
+                "state_funding": 789.9,
+                "public_councils": 9
+            },
+            "2021": {
+                "state_projects": 106,
+                "state_funding": 607.1,
+                "public_councils": 9
+            },
+            "2022": {
+                "registered_ngos": 837,
+                "state_projects": 106,
+                "state_funding": 637.4,
+                "public_councils": 9
+            },
+            "2023": {
+                "registered_ngos": 1217,
+                "state_projects": 137,
+                "state_funding": 984.4,
+                "public_councils": 9,
+                "public_hearings": 1
+            },
+            "2024": {
+                "registered_ngos": 1074,
+                "active_ngos": 964,
+                "state_projects": 147,
+                "state_funding": 1104.8,
+                "public_councils": 9,
+                "public_hearings": 90
+            },
+            "2025": {
+                "registered_ngos": 1146,
+                "active_ngos": 1100,
+                "state_projects": 144,
+                "state_funding": 1021.0,
+                "public_councils": 9,
+                "public_hearings": 96
+            }
+        },
+        "Мангистауская область": {
+            "2020": {
+                "state_projects": 40,
+                "state_funding": 147.8,
+                "public_councils": 8
+            },
+            "2021": {
+                "state_projects": 36,
+                "state_funding": 147.1,
+                "public_councils": 8
+            },
+            "2022": {
+                "registered_ngos": 787,
+                "state_projects": 35,
+                "state_funding": 140.0,
+                "grant_projects": 13,
+                "grant_funding": 111.1,
+                "public_councils": 8
+            },
+            "2023": {
+                "registered_ngos": 934,
+                "state_projects": 47,
+                "state_funding": 389.6,
+                "grant_projects": 42,
+                "grant_funding": 329.9,
+                "public_councils": 8,
+                "public_hearings": 38
+            },
+            "2024": {
+                "registered_ngos": 923,
+                "active_ngos": 860,
+                "state_projects": 42,
+                "state_funding": 348.5,
+                "grant_projects": 57,
+                "grant_funding": 589.0,
+                "public_councils": 8,
+                "public_hearings": 2
+            },
+            "2025": {
+                "registered_ngos": 957,
+                "active_ngos": 655,
+                "state_projects": 87,
+                "state_funding": 1112.1,
+                "grant_projects": 30,
+                "grant_funding": 331.8,
+                "public_councils": 8,
+                "public_hearings": 8
+            }
+        },
+        "Павлодарская область": {
+            "2020": {
+                "state_projects": 118,
+                "state_funding": 698.9,
+                "public_councils": 14
+            },
+            "2021": {
+                "state_projects": 101,
+                "state_funding": 1741.3,
+                "public_councils": 14
+            },
+            "2022": {
+                "registered_ngos": 801,
+                "state_projects": 108,
+                "state_funding": 504.2,
+                "public_councils": 14
+            },
+            "2023": {
+                "registered_ngos": 869,
+                "state_projects": 123,
+                "state_funding": 3490.0,
+                "public_councils": 14,
+                "public_hearings": 1
+            },
+            "2024": {
+                "registered_ngos": 761,
+                "active_ngos": 589,
+                "state_projects": 152,
+                "state_funding": 4943.7,
+                "public_councils": 14,
+                "public_hearings": 17
+            },
+            "2025": {
+                "registered_ngos": 841,
+                "active_ngos": 400,
+                "state_projects": 122,
+                "state_funding": 4369.2,
+                "public_councils": 14,
+                "public_hearings": 0
+            }
+        },
+        "Северо-Казахстанская область": {
+            "2020": {
+                "state_projects": 78,
+                "state_funding": 274.6,
+                "public_councils": 16
+            },
+            "2021": {
+                "state_projects": 110,
+                "state_funding": 202.7,
+                "public_councils": 16
+            },
+            "2022": {
+                "registered_ngos": 482,
+                "state_projects": 95,
+                "state_funding": 228.5,
+                "public_councils": 15
+            },
+            "2023": {
+                "registered_ngos": 507,
+                "state_projects": 103,
+                "state_funding": 256.4,
+                "public_councils": 15,
+                "public_hearings": 7
+            },
+            "2024": {
+                "registered_ngos": 452,
+                "active_ngos": 319,
+                "state_projects": 134,
+                "state_funding": 420.3,
+                "public_councils": 15,
+                "public_hearings": 21
+            },
+            "2025": {
+                "registered_ngos": 514,
+                "active_ngos": 403,
+                "state_projects": 131,
+                "state_funding": 402.0,
+                "public_councils": 15,
+                "public_hearings": 47
+            }
+        },
+        "Туркестанская область": {
+            "2020": {
+                "state_projects": 83,
+                "state_funding": 510.1,
+                "public_councils": 17
+            },
+            "2021": {
+                "state_projects": 106,
+                "state_funding": 443.3,
+                "public_councils": 17
+            },
+            "2022": {
+                "registered_ngos": 694,
+                "state_projects": 90,
+                "state_funding": 618.1,
+                "public_councils": 18
+            },
+            "2023": {
+                "registered_ngos": 721,
+                "state_projects": 74,
+                "state_funding": 623.1,
+                "public_councils": 18,
+                "public_hearings": 17
+            },
+            "2024": {
+                "registered_ngos": 775,
+                "active_ngos": 604,
+                "state_projects": 99,
+                "state_funding": 929.6,
+                "public_councils": 18,
+                "public_hearings": 2
+            },
+            "2025": {
+                "registered_ngos": 810,
+                "active_ngos": 726,
+                "state_projects": 96,
+                "state_funding": 452.2,
+                "public_councils": 18,
+                "public_hearings": 0
+            }
+        },
+        "область Ұлытау": {
+            "2020": {
+                "state_projects": 0,
+                "state_funding": 0.0,
+                "public_councils": null
+            },
+            "2021": {
+                "state_projects": 0,
+                "state_funding": 0.0,
+                "public_councils": null
+            },
+            "2022": {
+                "state_projects": 71,
+                "state_funding": 0.0,
+                "public_councils": 6
+            },
+            "2023": {
+                "registered_ngos": 277,
+                "state_projects": 171,
+                "state_funding": 868.7,
+                "public_councils": 6,
+                "public_hearings": null
+            },
+            "2024": {
+                "registered_ngos": 339,
+                "active_ngos": 154,
+                "state_projects": 163,
+                "state_funding": 1223.9,
+                "public_councils": 6,
+                "public_hearings": 13
+            },
+            "2025": {
+                "registered_ngos": 279,
+                "active_ngos": 200,
+                "state_projects": 224,
+                "state_funding": 1053.4,
+                "public_councils": 6,
+                "public_hearings": 27
+            }
+        },
+        "Восточно-Казахстанская область": {
+            "2020": {
+                "state_projects": 71,
+                "state_funding": 534.9,
+                "public_councils": 20
+            },
+            "2021": {
+                "state_projects": 68,
+                "state_funding": 437.2,
+                "public_councils": 20
+            },
+            "2022": {
+                "registered_ngos": 1130,
+                "state_projects": 42,
+                "state_funding": 377.7,
+                "public_councils": 12
+            },
+            "2023": {
+                "registered_ngos": 1080,
+                "state_projects": 55,
+                "state_funding": 451.0,
+                "public_councils": 12,
+                "public_hearings": 50
+            },
+            "2024": {
+                "registered_ngos": 981,
+                "active_ngos": 842,
+                "state_projects": 33,
+                "state_funding": 565.2,
+                "public_councils": 14,
+                "public_hearings": 15
+            },
+            "2025": {
+                "registered_ngos": 821,
+                "active_ngos": 216,
+                "state_projects": 67,
+                "state_funding": 795.7,
+                "public_councils": 14,
+                "public_hearings": 32
+            }
+        },
+        "г.Астана": {
+            "2020": {
+                "state_projects": 29,
+                "state_funding": 519.8,
+                "public_councils": 1
+            },
+            "2021": {
+                "state_projects": 17,
+                "state_funding": 884.0,
+                "public_councils": 1
+            },
+            "2022": {
+                "registered_ngos": 3143,
+                "state_projects": 42,
+                "state_funding": 1684.2,
+                "public_councils": 1
+            },
+            "2023": {
+                "registered_ngos": 3554,
+                "state_projects": 49,
+                "state_funding": 2438.8,
+                "public_councils": 1,
+                "public_hearings": null
+            },
+            "2024": {
+                "registered_ngos": 3541,
+                "active_ngos": 2945,
+                "state_projects": 49,
+                "state_funding": 3284.4,
+                "public_councils": 1,
+                "public_hearings": 19
+            },
+            "2025": {
+                "registered_ngos": 3513,
+                "active_ngos": 2945,
+                "state_projects": 42,
+                "state_funding": 6196.1,
+                "grant_projects": 2,
+                "grant_funding": 17.9,
+                "public_councils": 1,
+                "public_hearings": 68
+            }
+        },
+        "г.Алматы": {
+            "2020": {
+                "state_projects": 57,
+                "state_funding": 401.8,
+                "public_councils": 1
+            },
+            "2021": {
+                "state_projects": 57,
+                "state_funding": 1953.3,
+                "public_councils": 1
+            },
+            "2022": {
+                "registered_ngos": 4064,
+                "state_projects": 94,
+                "state_funding": 2360.2,
+                "public_councils": 1
+            },
+            "2023": {
+                "registered_ngos": 5017,
+                "state_projects": 106,
+                "state_funding": 4758.2,
+                "public_councils": 1,
+                "public_hearings": 1
+            },
+            "2024": {
+                "registered_ngos": 4254,
+                "active_ngos": 3383,
+                "state_projects": 131,
+                "state_funding": 6066.7,
+                "grant_projects": 1,
+                "grant_funding": 11.1,
+                "public_councils": 1,
+                "public_hearings": 2
+            },
+            "2025": {
+                "registered_ngos": 4259,
+                "active_ngos": 3456,
+                "state_projects": 143,
+                "state_funding": 7391.5,
+                "grant_projects": 1,
+                "grant_funding": 10.2,
+                "public_councils": 1,
+                "public_hearings": 1
+            }
+        },
+        "г.Шымкент": {
+            "2020": {
+                "state_projects": 28,
+                "state_funding": 233.6,
+                "public_councils": 1
+            },
+            "2021": {
+                "state_projects": 62,
+                "state_funding": 456.9,
+                "public_councils": 1
+            },
+            "2022": {
+                "registered_ngos": 1102,
+                "state_projects": 60,
+                "state_funding": 617.5,
+                "public_councils": 1
+            },
+            "2023": {
+                "registered_ngos": 1512,
+                "state_projects": 70,
+                "state_funding": 589.8,
+                "public_councils": 1,
+                "public_hearings": 6
+            },
+            "2024": {
+                "registered_ngos": 1492,
+                "active_ngos": 1282,
+                "state_projects": 28,
+                "state_funding": 475.6,
+                "grant_projects": 13,
+                "grant_funding": 105.6,
+                "public_councils": 1,
+                "public_hearings": 1
+            },
+            "2025": {
+                "registered_ngos": 1483,
+                "active_ngos": 1282,
+                "state_projects": 18,
+                "state_funding": 141.0,
+                "public_councils": 1,
+                "public_hearings": 10
+            }
+        }
+    }
+}
