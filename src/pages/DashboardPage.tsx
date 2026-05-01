@@ -108,7 +108,7 @@ export default function DashboardPage() {
                                         />
                                         <Bar dataKey="value" radius={[0, 8, 8, 0]} barSize={28} animationDuration={1000}>
                                             <LabelList dataKey="value" position="right" formatter={(v: any) => `${v}%`} fill="#475569" fontSize={13} fontWeight={700} />
-                                            {chartData.map((entry, index) => (
+                                            {chartData.map((_, index) => (
                                                 <Cell key={`cell-${index}`} fill={index === 0 ? 'url(#colorBlue)' : '#93c5fd'} className="transition-all duration-300 hover:opacity-80 cursor-pointer" />
                                             ))}
                                         </Bar>
