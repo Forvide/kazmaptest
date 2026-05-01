@@ -24,9 +24,18 @@ export function useSurveyData() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Fetch and parse the CSV from the public folder
-        fetch('/survey.csv')
-            .then(res => res.text())
+        // Use BASE_URL to correctly resolve the path when deployed to GitHub Pages subpaths
+        const csvPath = `${import.meta.env.BASE_URL}survey.csv`;
+        fetch(csvPath)
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                // Ensure we didn't receive a 404 HTML fallback from GitHub Pages
+                const contentType = res.headers.get('content-type');
+                if (contentType && contentType.includes('text/html')) {
+                    throw new Error('Received HTML instead of CSV - likely a 404 Not Found error');
+                }
+                return res.text();
+            })
             .then(csv => {
                 Papa.parse(csv, {
                     skipEmptyLines: true,
