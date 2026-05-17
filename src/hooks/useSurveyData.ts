@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Papa from 'papaparse';
+import { useMapStore } from '../store/useMapStore';
 
 export interface DataPoint {
     count: number;
@@ -19,13 +20,16 @@ export interface Question {
 }
 
 export function useSurveyData() {
+    const { language } = useMapStore();
     const [data, setData] = useState<Question[]>([]);
     const [regions, setRegions] = useState<string[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true);
         // Use BASE_URL to correctly resolve the path when deployed to GitHub Pages subpaths
-        const csvPath = `${import.meta.env.BASE_URL}survey.csv`;
+        const fileName = language === 'kk' ? 'survey_kz.csv' : 'survey.csv';
+        const csvPath = `${import.meta.env.BASE_URL}${fileName}`;
         fetch(csvPath)
             .then(res => {
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
@@ -43,8 +47,17 @@ export function useSurveyData() {
                         const rows = results.data as string[][];
                         if (rows.length < 2) return;
 
-                        // Parse Regions (Row 0)
-                        const headerRow = rows[0];
+                        // Find the header row by looking for the national key in index 2
+                        let headerRowIndex = 0;
+                        for (let i = 0; i < Math.min(5, rows.length); i++) {
+                            if (rows[i][2] === 'КАЗАХСТАН' || rows[i][2] === 'ҚАЗАҚСТАН') {
+                                headerRowIndex = i;
+                                break;
+                            }
+                        }
+
+                        // Parse Regions
+                        const headerRow = rows[headerRowIndex];
                         const regionMap: { index: number, name: string }[] = [];
                         const discoveredRegions: string[] = [];
                         for (let i = 2; i < headerRow.length; i += 2) {
@@ -60,7 +73,7 @@ export function useSurveyData() {
                         const questions: Question[] = [];
                         let currentQuestion: Question | null = null;
 
-                        for (let i = 1; i < rows.length; i++) {
+                        for (let i = headerRowIndex + 1; i < rows.length; i++) {
                             const row = rows[i];
                             if (row.length < 2) continue;
 
@@ -70,7 +83,7 @@ export function useSurveyData() {
                             if (!qText && !aText) continue;
 
                             // Sometimes there are repeated headers like КАЗАХСТАН, г. Астана
-                            if (aText === '' && row[2] === 'КАЗАХСТАН') continue;
+                            if (aText === '' && (row[2] === 'КАЗАХСТАН' || row[2] === 'ҚАЗАҚСТАН')) continue;
 
                             if (qText) {
                                 // Important: Only add if there is actual text
@@ -82,7 +95,7 @@ export function useSurveyData() {
                                 questions.push(currentQuestion);
                             }
 
-                            if (currentQuestion && aText && aText !== 'КАЗАХСТАН') {
+                            if (currentQuestion && aText && aText !== 'КАЗАХСТАН' && aText !== 'ҚАЗАҚСТАН') {
                                 const answer: Answer = {
                                     text: aText,
                                     regions: {}
@@ -119,7 +132,7 @@ export function useSurveyData() {
                 console.error("Не удалось загрузить данные опроса:", err);
                 setLoading(false);
             });
-    }, []);
+    }, [language]);
 
     return { data, regions, loading };
 }

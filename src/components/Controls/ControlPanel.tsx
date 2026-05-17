@@ -1,16 +1,18 @@
 import { useMapStore, MetricType } from '../../store/useMapStore';
-import { metricsLabels } from '../../data/mockData';
+import { translations } from '../../i18n/translations';
 
 export default function ControlPanel() {
-    const { selectedMetric, selectedYear, setMetric, setYear } = useMapStore();
+    const { language, selectedMetric, selectedYear, setMetric, setYear } = useMapStore();
+    const t = translations[language].controlPanel;
+    const metricsLabels = translations[language].metrics;
 
     return (
         <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl w-80 border border-slate-100">
-            <h2 className="text-xl font-bold mb-4 text-slate-800">Интерактивная карта</h2>
+            <h2 className="text-xl font-bold mb-4 text-slate-800">{t.title}</h2>
 
             {/* Metric Selector */}
             <div className="mb-5">
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">ПОКАЗАТЕЛЬ</label>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">{t.metric}</label>
                 <div className="relative">
                     <select
                         className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-lg focus:ring-brand-500 focus:border-brand-500 block p-2.5 appearance-none cursor-pointer hover:border-slate-300 transition-colors shadow-sm"

@@ -1,21 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSurveyData } from '../hooks/useSurveyData';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LabelList, Cell } from 'recharts';
+import { useMapStore } from '../store/useMapStore';
+import { translations } from '../i18n/translations';
 
 export default function DashboardPage() {
     const { data, regions, loading } = useSurveyData();
     const [selectedQuestionIdx, setSelectedQuestionIdx] = useState(0);
-    const [selectedRegion, setSelectedRegion] = useState('КАЗАХСТАН');
+    const { language } = useMapStore();
+    const t = translations[language].dashboard;
+    const nationalKey = language === 'kk' ? 'ҚАЗАҚСТАН' : 'КАЗАХСТАН';
+    const [selectedRegion, setSelectedRegion] = useState(nationalKey);
+
+    // Sync selectedRegion if language changes and the previous selection is no longer valid
+    useEffect(() => {
+        if (!loading && regions.length > 0 && !regions.includes(selectedRegion)) {
+            setSelectedRegion(nationalKey);
+        }
+    }, [loading, regions, selectedRegion, nationalKey]);
 
     if (loading) {
         return (
             <div className="flex items-center justify-center w-full h-full">
-                <div className="animate-spin w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full" />
+                <div className="flex flex-col items-center gap-4">
+                    <div className="animate-spin w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full" />
+                    <span className="text-slate-500 font-medium">{t.loading}</span>
+                </div>
             </div>
         );
     }
 
-    if (!data || data.length === 0) return <div className="flex items-center justify-center w-full h-full text-slate-500">Не удалось загрузить данные опроса локально.</div>;
+    if (!data || data.length === 0) return <div className="flex items-center justify-center w-full h-full text-slate-500">{t.loadingError}</div>;
 
     const currentQuestion = data[selectedQuestionIdx];
 
@@ -31,11 +46,11 @@ export default function DashboardPage() {
     let topAnswer = currentQuestion.answers[0];
     if (currentQuestion.answers.length > 0) {
         topAnswer = currentQuestion.answers.reduce((prev, current) =>
-            (prev.regions['КАЗАХСТАН']?.percentFloat > current.regions['КАЗАХСТАН']?.percentFloat) ? prev : current
+            ((prev.regions[nationalKey]?.percentFloat || 0) > (current.regions[nationalKey]?.percentFloat || 0)) ? prev : current
         );
     }
 
-    const regionComparisonData = topAnswer ? regions.filter(r => r !== 'КАЗАХСТАН').map(r => ({
+    const regionComparisonData = topAnswer ? regions.filter(r => r !== 'КАЗАХСТАН' && r !== 'ҚАЗАҚСТАН').map(r => ({
         name: r,
         value: topAnswer.regions[r]?.percentFloat || 0
     })).sort((a, b) => b.value - a.value) : [];
@@ -48,14 +63,14 @@ export default function DashboardPage() {
                 <header className="flex flex-col md:flex-row md:items-start lg:items-center justify-between gap-6 bg-white p-6 lg:p-8 rounded-3xl shadow-[0_2px_20px_rgb(0,0,0,0.04)] border border-slate-100">
                     <div className="max-w-2xl">
                         <div className="inline-block px-3 py-1 mb-3 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold tracking-wider uppercase">
-                            Данные опроса
+                            {t.tag}
                         </div>
-                        <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight leading-tight">Графики гражданской активности</h1>
-                        <p className="text-slate-500 text-base mt-2">Исследуйте ответы касательно гражданского общества, волонтерства и политической вовлеченности по регионам Казахстана.</p>
+                        <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight leading-tight">{t.title}</h1>
+                        <p className="text-slate-500 text-base mt-2">{t.subtitle}</p>
                     </div>
 
                     <div className="flex flex-col items-start gap-2 min-w-[200px]">
-                        <label className="text-xs font-bold text-slate-400 uppercase tracking-widest pl-1">Выбор региона</label>
+                        <label className="text-xs font-bold text-slate-400 uppercase tracking-widest pl-1">{t.chooseRegion}</label>
                         <select
                             className="w-full p-3 border-2 border-slate-200 rounded-xl bg-slate-50 font-bold text-slate-700 outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all cursor-pointer shadow-sm appearance-none"
                             value={selectedRegion}
@@ -71,7 +86,7 @@ export default function DashboardPage() {
                     {/* Question Selector */}
                     <div className="bg-white p-6 lg:p-8 rounded-3xl shadow-[0_2px_20px_rgb(0,0,0,0.04)] border border-slate-100 relative overflow-hidden group">
                         <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-blue-500 to-indigo-500 rounded-l-3xl"></div>
-                        <label className="text-xs font-bold uppercase text-slate-400 tracking-widest mb-3 block ml-4">Выберите вопрос опроса</label>
+                        <label className="text-xs font-bold uppercase text-slate-400 tracking-widest mb-3 block ml-4">{t.chooseQuestion}</label>
                         <div className="relative ml-4">
                             <select
                                 className="w-full p-4 pl-0 bg-transparent font-bold text-xl lg:text-2xl text-slate-800 outline-none cursor-pointer appearance-none group-hover:text-blue-600 transition-colors"
@@ -91,8 +106,8 @@ export default function DashboardPage() {
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
                         {/* Main Breakdown Chart */}
                         <div className="bg-white p-6 lg:p-8 rounded-3xl shadow-[0_2px_20px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col min-h-[500px]">
-                            <h2 className="text-xl font-bold text-slate-800 mb-1">Распределение ответов</h2>
-                            <p className="text-sm text-slate-500 mb-8 pb-4 border-b border-slate-100">Процентное распределение для <span className="font-semibold text-blue-600">{selectedRegion}</span></p>
+                            <h2 className="text-xl font-bold text-slate-800 mb-1">{t.breakdown}</h2>
+                            <p className="text-sm text-slate-500 mb-8 pb-4 border-b border-slate-100">{t.breakdownSub} <span className="font-semibold text-blue-600">{selectedRegion}</span></p>
 
                             <div className="flex-1 w-full relative">
                                 <ResponsiveContainer width="100%" height="100%">
@@ -125,9 +140,9 @@ export default function DashboardPage() {
 
                         {/* Regional Comparison Chart */}
                         <div className="bg-white p-6 lg:p-8 rounded-3xl shadow-[0_2px_20px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col min-h-[500px]">
-                            <h2 className="text-xl font-bold text-slate-800 mb-1">Сравнение регионов</h2>
+                            <h2 className="text-xl font-bold text-slate-800 mb-1">{t.comparison}</h2>
                             <p className="text-sm text-slate-500 mb-8 pb-4 border-b border-slate-100">
-                                Ответившие: <span className="font-semibold text-indigo-600 line-clamp-1 mt-1" title={topAnswer?.text}>"{topAnswer?.text}"</span>
+                                {t.respondents} <span className="font-semibold text-indigo-600 line-clamp-1 mt-1" title={topAnswer?.text}>"{topAnswer?.text}"</span>
                             </p>
 
                             <div className="flex-1 w-full relative">

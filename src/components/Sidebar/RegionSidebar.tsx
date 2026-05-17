@@ -1,10 +1,13 @@
 import { useMapStore } from "../../store/useMapStore";
-import { metricsLabels, mockData } from "../../data/mockData";
+import { mockData } from "../../data/mockData";
 import { regionLabels } from "../../data/regionLabels";
 import { X, TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { translations } from "../../i18n/translations";
 
 export default function RegionSidebar() {
-    const { selectedRegion, selectedYear, setRegion, selectedMetric } = useMapStore();
+    const { language, selectedRegion, selectedYear, setRegion, selectedMetric } = useMapStore();
+    const t = translations[language].sidebar;
+    const metricsLabels = translations[language].metrics;
 
     if (!selectedRegion) return null;
 
@@ -26,8 +29,8 @@ export default function RegionSidebar() {
             {/* Header */}
             <div className="p-6 border-b border-slate-100 flex justify-between items-start bg-slate-50/50">
                 <div>
-                    <p className="text-xs font-semibold text-brand-600 tracking-wider uppercase mb-1">Регион</p>
-                    <h2 className="text-2xl font-extrabold text-slate-800 leading-tight">{regionLabels[selectedRegion as keyof typeof regionLabels] || selectedRegion}</h2>
+                    <p className="text-xs font-semibold text-brand-600 tracking-wider uppercase mb-1">{t.region}</p>
+                    <h2 className="text-2xl font-extrabold text-slate-800 leading-tight">{regionLabels[selectedRegion as keyof typeof regionLabels]?.[language] || selectedRegion}</h2>
                 </div>
                 <button
                     onClick={() => setRegion(null)}
@@ -53,7 +56,7 @@ export default function RegionSidebar() {
                         {/* National share progress */}
                         <div className="mt-4">
                             <div className="flex justify-between text-xs mb-1">
-                                <span className="font-medium text-slate-500">Доля по стране</span>
+                                <span className="font-medium text-slate-500">{t.nationalShare}</span>
                                 <span className="font-bold text-brand-600 flex items-center">
                                     {((Number(currentData[selectedMetric as keyof typeof currentData]) / Number(nationalData[selectedMetric as keyof typeof nationalData])) * 100).toFixed(1)}%
                                 </span>
@@ -68,11 +71,11 @@ export default function RegionSidebar() {
                     </div>
                 )}
 
-                <h3 className="text-sm font-bold text-slate-800 uppercase tracking-widest mb-4">Все показатели ({selectedYear})</h3>
+                <h3 className="text-sm font-bold text-slate-800 uppercase tracking-widest mb-4">{t.allMetrics} ({selectedYear})</h3>
 
                 {/* Stats Grid / List */}
                 {!currentData ? (
-                    <div className="text-center py-10 text-slate-400">Нет данных для выбранного года</div>
+                    <div className="text-center py-10 text-slate-400">{t.noData}</div>
                 ) : (
                     <div className="space-y-4">
                         {Object.entries(metricsLabels).map(([key, label]) => {

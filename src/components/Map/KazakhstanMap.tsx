@@ -8,7 +8,7 @@ import { useState } from "react";
 const geoUrl = `${import.meta.env.BASE_URL}kz.json`;
 
 export default function KazakhstanMap() {
-    const { selectedMetric, selectedYear, selectedRegion, setRegion } = useMapStore();
+    const { selectedMetric, selectedYear, selectedRegion, setRegion, language } = useMapStore();
     const [tooltipContent, setTooltipContent] = useState("");
     const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
@@ -73,7 +73,8 @@ export default function KazakhstanMap() {
                                         geography={geo}
                                         onClick={() => setRegion(regionName)}
                                         onMouseEnter={() => {
-                                            setTooltipContent(`${regionLabels[regionName] || regionName}: ${getRegionValue(regionName)}`);
+                                            const displayLabel = regionLabels[regionName] ? regionLabels[regionName][language] || regionName : regionName;
+                                            setTooltipContent(`${displayLabel}: ${getRegionValue(regionName)}`);
                                         }}
                                         onMouseLeave={() => {
                                             setTooltipContent("");
