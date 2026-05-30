@@ -125,7 +125,7 @@ export default function KazakhstanMap() {
             )}
 
             {/* Footer Text */}
-            <div className="absolute bottom-4 right-4 max-w-xs md:max-w-md lg:max-w-lg text-[9px] md:text-[10px] lg:text-xs text-slate-500/80 bg-white/70 p-2 md:p-3 rounded-lg shadow-sm backdrop-blur-md border border-slate-200/50 z-30 pointer-events-none text-right">
+            <div className="absolute bottom-4 right-4 max-w-xs md:max-w-md lg:max-w-lg text-xs md:text-sm lg:text-base text-slate-500/80 bg-white/70 p-2 md:p-3 rounded-lg shadow-sm backdrop-blur-md border border-slate-200/50 z-30 pointer-events-none text-justify">
                 {translations[language as keyof typeof translations]?.footer?.text}
             </div>
         </div>

@@ -19,7 +19,7 @@ interface MapState {
 }
 
 export const useMapStore = create<MapState>((set) => ({
-    language: 'ru',
+    language: 'kk',
     selectedMetric: "registered_ngos",
     selectedYear: 2024,
     selectedRegion: null,
