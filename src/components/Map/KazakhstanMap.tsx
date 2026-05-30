@@ -3,6 +3,8 @@ import { useMapStore } from "../../store/useMapStore";
 import { mockData } from "../../data/mockData";
 import { regionLabels } from "../../data/regionLabels";
 import { useState } from "react";
+import { translations } from "../../i18n/translations";
+
 
 // Placeholder empty array until GeoJSON is loaded
 const geoUrl = `${import.meta.env.BASE_URL}kz.json`;
@@ -118,6 +120,11 @@ export default function KazakhstanMap() {
                     <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-slate-900"></div>
                 </div>
             )}
+
+            {/* Footer Text */}
+            <div className="absolute bottom-4 right-4 max-w-xs md:max-w-md lg:max-w-lg text-[9px] md:text-[10px] lg:text-xs text-slate-500/80 bg-white/70 p-2 md:p-3 rounded-lg shadow-sm backdrop-blur-md border border-slate-200/50 z-30 pointer-events-none text-right">
+                {translations[language as keyof typeof translations]?.footer?.text}
+            </div>
         </div>
     );
 }

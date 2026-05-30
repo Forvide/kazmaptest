@@ -34,7 +34,7 @@ export default function ControlPanel() {
             {/* Year Selector */}
             <div>
                 <div className="flex justify-between items-center mb-2">
-                    <label className="text-xs font-semibold uppercase tracking-wider text-slate-500">ГОД</label>
+                    <label className="text-xs font-semibold uppercase tracking-wider text-slate-500">{t.year}</label>
                     <span className="text-brand-600 font-bold">{selectedYear}</span>
                 </div>
                 <input

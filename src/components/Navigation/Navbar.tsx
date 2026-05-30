@@ -12,9 +12,7 @@ export default function Navbar() {
     return (
         <nav className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between shadow-sm z-10 shrink-0 relative">
             <div className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-md">
-                    <Map className="w-5 h-5 text-white" />
-                </div>
+                <img src="/logo.svg" alt="Logo" className="w-9 h-9" />
                 <span className="font-extrabold text-2xl text-slate-800 tracking-tight">{t.title}</span>
             </div>
 
