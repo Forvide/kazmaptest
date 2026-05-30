@@ -1,6 +1,5 @@
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
 import { useMapStore } from "../../store/useMapStore";
-import { mockData } from "../../data/mockData";
 import { regionLabels } from "../../data/regionLabels";
 import { useState } from "react";
 import { translations } from "../../i18n/translations";
@@ -10,27 +9,29 @@ import { translations } from "../../i18n/translations";
 const geoUrl = `${import.meta.env.BASE_URL}kz.json`;
 
 export default function KazakhstanMap() {
-    const { selectedMetric, selectedYear, selectedRegion, setRegion, language } = useMapStore();
+    const { selectedMetric, selectedYear, selectedRegion, setRegion, language, mapData } = useMapStore();
     const [tooltipContent, setTooltipContent] = useState("");
     const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
     // Function to get region data and calculate color
     const getRegionColor = (geoName: string) => {
+        if (!mapData) return "#e2e8f0";
         // If not in our mock data yet, return base color
-        if (!mockData.regions[geoName as keyof typeof mockData.regions]) {
+        if (!mapData.regions[geoName]) {
             return "#e2e8f0"; // slate-200
         }
 
-        const regionDataAllYears = mockData.regions[geoName as keyof typeof mockData.regions];
-        const regionData = regionDataAllYears[selectedYear.toString() as keyof typeof regionDataAllYears];
+        const regionDataAllYears = mapData.regions[geoName];
+        const regionData = regionDataAllYears[selectedYear.toString()];
 
         if (!regionData) return "#e2e8f0";
 
-        const value = regionData[selectedMetric as keyof typeof regionData];
+        const value = regionData[selectedMetric];
         if (value === null || value === undefined) return "#e2e8f0";
 
         // Very simple choropleth logic for now - normalize roughly based on max possible value expected
-        let nationalTotal = mockData.national_totals[selectedYear.toString() as keyof typeof mockData.national_totals][selectedMetric];
+        const nationalYearData = mapData.national_totals[selectedYear.toString()];
+        let nationalTotal = nationalYearData ? nationalYearData[selectedMetric] : null;
         if (!nationalTotal || nationalTotal === 0) return "#99f6e4"; // fallback active color
 
         const percentage = Number(value) / Number(nationalTotal); // This will be small, let's amplify for visual difference
@@ -45,9 +46,11 @@ export default function KazakhstanMap() {
 
     const getRegionValue = (geoName: string) => {
         try {
-            const region = mockData.regions[geoName as keyof typeof mockData.regions];
-            const yearData = region[selectedYear.toString() as keyof typeof region] as any;
-            return yearData ? yearData[selectedMetric] : "Нет данных";
+            if (!mapData) return "Нет данных";
+            const region = mapData.regions[geoName];
+            if (!region) return "Нет данных";
+            const yearData = region[selectedYear.toString()];
+            return yearData && yearData[selectedMetric] !== null && yearData[selectedMetric] !== undefined ? yearData[selectedMetric] : "Нет данных";
         } catch {
             return "Нет данных";
         }

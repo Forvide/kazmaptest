@@ -1,20 +1,19 @@
 import { useMapStore } from "../../store/useMapStore";
-import { mockData } from "../../data/mockData";
 import { regionLabels } from "../../data/regionLabels";
 import { X, TrendingUp, TrendingDown, Minus } from "lucide-react";
 import { translations } from "../../i18n/translations";
 
 export default function RegionSidebar() {
-    const { language, selectedRegion, selectedYear, setRegion, selectedMetric } = useMapStore();
+    const { language, selectedRegion, selectedYear, setRegion, selectedMetric, mapData } = useMapStore();
     const t = translations[language].sidebar;
     const metricsLabels = translations[language].metrics;
 
-    if (!selectedRegion) return null;
+    if (!selectedRegion || !mapData) return null;
 
     const getRegionData = (year: number) => {
         try {
-            const rData = mockData.regions[selectedRegion as keyof typeof mockData.regions];
-            return rData[year.toString() as keyof typeof rData];
+            const rData = mapData.regions[selectedRegion];
+            return rData ? rData[year.toString()] : null;
         } catch {
             return null;
         }
@@ -22,7 +21,7 @@ export default function RegionSidebar() {
 
     const currentData = getRegionData(selectedYear);
     const prevData = getRegionData(selectedYear - 1);
-    const nationalData = mockData.national_totals[selectedYear.toString() as keyof typeof mockData.national_totals];
+    const nationalData = mapData.national_totals[selectedYear.toString()];
 
     return (
         <div className={`fixed right-0 top-0 bottom-0 w-96 bg-white shadow-2xl z-20 border-l border-slate-100 transform transition-transform duration-300 ease-in-out flex flex-col`}>
@@ -44,12 +43,12 @@ export default function RegionSidebar() {
             <div className="flex-1 overflow-y-auto p-6">
 
                 {/* National Share Card */}
-                {currentData && currentData[selectedMetric as keyof typeof currentData] !== null && nationalData && nationalData[selectedMetric as keyof typeof nationalData] !== null && (
+                {currentData && currentData[selectedMetric] !== null && nationalData && nationalData[selectedMetric] !== null && nationalData[selectedMetric] !== undefined && (
                     <div className="bg-gradient-to-br from-brand-50 to-white border border-brand-100 p-5 rounded-2xl mb-8 shadow-sm">
-                        <h3 className="text-sm font-semibold text-slate-600 mb-1">{metricsLabels[selectedMetric]}</h3>
+                        <h3 className="text-sm font-semibold text-slate-600 mb-1">{metricsLabels[selectedMetric as keyof typeof metricsLabels]}</h3>
                         <div className="flex items-baseline mb-2">
                             <span className="text-4xl font-black text-brand-700 mr-2">
-                                {Number(currentData[selectedMetric as keyof typeof currentData]).toLocaleString()}
+                                {Number(currentData[selectedMetric]).toLocaleString()}
                             </span>
                         </div>
 
@@ -58,13 +57,13 @@ export default function RegionSidebar() {
                             <div className="flex justify-between text-xs mb-1">
                                 <span className="font-medium text-slate-500">{t.nationalShare}</span>
                                 <span className="font-bold text-brand-600 flex items-center">
-                                    {((Number(currentData[selectedMetric as keyof typeof currentData]) / Number(nationalData[selectedMetric as keyof typeof nationalData])) * 100).toFixed(1)}%
+                                    {((Number(currentData[selectedMetric]) / Number(nationalData[selectedMetric])) * 100).toFixed(1)}%
                                 </span>
                             </div>
                             <div className="w-full bg-brand-100 rounded-full h-1.5">
                                 <div
                                     className="bg-brand-500 h-1.5 rounded-full"
-                                    style={{ width: `${(Number(currentData[selectedMetric as keyof typeof currentData]) / Number(nationalData[selectedMetric as keyof typeof nationalData])) * 100}%` }}
+                                    style={{ width: `${(Number(currentData[selectedMetric]) / Number(nationalData[selectedMetric])) * 100}%` }}
                                 ></div>
                             </div>
                         </div>
@@ -79,7 +78,7 @@ export default function RegionSidebar() {
                 ) : (
                     <div className="space-y-4">
                         {Object.entries(metricsLabels).map(([key, label]) => {
-                            const metricKey = key as keyof typeof currentData;
+                            const metricKey = key;
                             let value = currentData[metricKey];
                             let prevValue = prevData ? prevData[metricKey] : null;
 
